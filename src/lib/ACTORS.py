@@ -1,7 +1,7 @@
-ACTORS = {'mousetester0': {'DIM': (64, 64),
-                  'POS': (112, 144),
-                  'name': 'mousetester0',
-                  'offsetkey': 'mousetester',
-                  'scripts': 'mousetester',
-                  'sprites': 'mousetester',
-                  'tangible': False}}
+ACTORS = {'mouseCover0': {'DIM': (48, 48),
+                 'POS': (192, 208),
+                 'name': 'mouseCover0',
+                 'offsetkey': 'mouseCover',
+                 'scripts': 'mouseCover',
+                 'sprites': 'mouseCover',
+                 'tangible': False}}

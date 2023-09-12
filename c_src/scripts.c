@@ -3491,6 +3491,18 @@ int resolve_script(int scriptIdx, Actor *self, Actor *related, World *world,
       add_stick_to_input_state(inputStateValue, stickValue);
       break;
     }
+    case SHOW_MOUSE: {
+      int valueType = PARAMS[0];
+      int valueValue = PARAMS[1];
+      if (valueType != INT) {
+	printf("Actor %s error: ", get_string(self->name));
+	print_statement(statement);
+	printf("Value for SHOW_MOUSE must be type INT\n");
+      	break;
+      }
+      SDL_ShowCursor(valueValue);
+      break;
+    }
     case ADD_INPUT_STATE: {
       int inputStateType = PARAMS[0];
       int inputStateValue = PARAMS[1];

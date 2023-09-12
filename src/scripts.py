@@ -1,3 +1,4 @@
+import pygame
 from src import inputs
 from src import frames
 from src import actor as a
@@ -88,6 +89,10 @@ def resolve(reference, script, world, related=None, logfunc=print):
 
             elif verb == "update_sticks":
                 inputs.update_sticks()
+
+            elif verb == "show_mouse":
+                value = cmd.pop(0)
+                pygame.mouse.set_visible(value)
 
             elif verb == "set":
                 actor, att, value = cmd

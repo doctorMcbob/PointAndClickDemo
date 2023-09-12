@@ -1,0 +1,23 @@
+MOUSE|0,0,0,0|False|
+START:0 mousehand0 -8,-8
+POINT:0 mousehand0 -8,-8
+CLOSED:0 mousehand1 -8,-8
+
+|START:0|
+set self direction -1
+show_mouse 0
+set self state POINT
+
+|POINT:0|
+set self x inpMOUSE_X
+set self y inpMOUSE_Y
+if inpMOUSE_LEFT
+   set self state CLOSED
+endif
+
+|CLOSED:0|
+set self x inpMOUSE_X
+set self y inpMOUSE_Y
+if not inpMOUSE_LEFT
+   set self state POINT
+endif

@@ -7,8 +7,16 @@
 #include <SDL2/SDL.h>
 
 void spritesheet_load(SDL_Renderer* rend) {
-    load_sprite(32, _background, 16, 16, rend);
-    load_sprite(35, _empty, 16, 32, rend);
-    load_sprite(60, _white, 64, 64, rend);
-    add_sprite_map(46);
+    load_sprite(34, _background, 16, 16, rend);
+    load_sprite(37, _empty, 16, 32, rend);
+    load_sprite(65, _white, 64, 64, rend);
+    load_sprite(50, _mousehand0, 48, 48, rend);
+    load_sprite(51, _mousehand1, 48, 48, rend);
+    add_offset(50, -8, -8);
+    add_offset(51, -8, -8);
+    add_sprite_map(48);
+    add_to_sprite_map(48, 22, 0, 50);
+    add_to_sprite_map(48, 18, 0, 50);
+    add_to_sprite_map(48, 8, 0, 51);
+    add_sprite_map(52);
 }
