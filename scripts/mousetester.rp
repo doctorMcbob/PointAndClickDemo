@@ -1,0 +1,9 @@
+TEST|0,0,0,0|False|
+
+|START:0|
+print inpMOUSE_X + ", " + inpMOUSE_Y
+print inpMOUSE_LEFT + ", " + inpMOUSE_RIGHT
+print inpCLICK_LEFT + ", " + inpCLICK_RIGHT
+if MOUSEOVER?
+   print "MOUSE OVER!"
+endif
