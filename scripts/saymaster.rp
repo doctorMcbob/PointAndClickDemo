@@ -1,0 +1,54 @@
+MGMT|0,0,0,0|False|
+START:0 empty 0,0
+WAIT:0 empty 0,0
+UPDATEALL:0 empty 0,0
+
+|START:0|
+set self state WAIT
+
+set self letters 224
+set self per_line 45
+set self AT 0
+
+set self _text "THIS IS THE DEFAULT TEXT LOADED IN MEMORY THAT THE TEXT WILL SAY IF IT IS SOMEHOW NOT BEING INITIALIZED ELSEWHERE IN THE APPLICATION, IM TERRIBLY SORRY@ IM GOING TO KEEP TYPING THOUGH BECAUSE IT COULD BE USEFUL FOR DEBUG PURPOSES FOR ME TO TEST THE TEXT, SO I GUESS AT THIS POINT ITS REALLY JUST FLAVOR TEXT PRETTY AWESOME, EH? WOULD YOU LIKE TO KNOW HOW MY DAY WAS? IT WAS OKAY@ I DONT HAVE A JOB AND SO I BASICALLY JUST DID THIS ALL DAY@ HEY DONT TELL ME WHAT TO DO, I AUGHTA, WHY I AUGHTA GRRR I WONT LET YOU GET AWAY WITH THIS! IM GONNA GETCHA IM GONNA GETCHA! OH WAIT I DONT THINK I CAN GET YOU BECAUSE IM JUST SITTING HERE TYPING AND YOUR ON THE OTHER SIDE, THAT IS TO SAY YOURE PLAYING THIS IN THE FUTURE BECAUSE AS IM TYPING THIS THE GAME IS NOT DONE YET@ ANYWAYS THATS PROBABLY ENOUGH TEXT TO SCROLL FOR A WHILE, THANK YOU SO MUCH FOR PLAYING MY GAME@"
+
+set self text self._text
+
+|WAIT:2|
+if inpCLICK_LEFT
+   if isframe SAY
+      killframe SAY
+   endif
+endif
+
+|UPDATEALL:0|
+exec updateText
+set self frame 0
+set self state WAIT
+
+|updateText|
+for letterIdx range self.letters
+    set self lettername letter + letterIdx
+    if len self.text <= self.AT
+       set self.lettername state _SPACE_
+       break
+    endif
+    set self.lettername state self.text at self.AT
+    if self.lettername.state == " "
+       set self.lettername state _SPACE_
+    endif
+    if self.lettername.state == "@"
+    	set self.lettername state DOT
+    endif
+    if self.lettername.state == ","
+       set self.lettername state COMMA
+    endif
+    if self.lettername.state == "?"
+       set self.lettername state QUESTION
+    endif
+    if self.lettername.state == "!"
+       set self.lettername state BANG
+    endif
+    set self AT self.AT + 1
+endfor
+

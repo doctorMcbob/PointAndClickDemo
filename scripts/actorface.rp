@@ -1,0 +1,11 @@
+MGMT|0,0,0,0|False|
+OFF:0 empty 0,0
+START:0 empty 0,0
+TEST_MAN_HEY:0 man_hey 0,0
+TEST_MAN_SNEAR:0 man_snear 0,0
+TEST_MAN_UMM:0 man_umm 0,0
+TEST_MAN_WHAT:0 man_what 0,0
+
+|START:0|
+set self state OFF
+

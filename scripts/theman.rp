@@ -1,0 +1,31 @@
+MGMT|0,0,0,0|False|
+START:0 man_world_stand 0,0
+WAIT:0 man_world_stand 0,0
+OVER:0 man_world_hey 0,0
+
+|START:0|
+set self state WAIT
+
+|WAIT:0|
+if MOUSEOVER?
+   set self state OVER
+endif
+
+|OVER:0|
+if not MOUSEOVER?
+   set self state WAIT
+endif
+if inpCLICK_LEFT
+   exec press
+   set self state WAIT
+endif
+
+|press|
+set self calc isframe SAY
+if not self.calc
+   makeframe SAY sayroom 64 256 1024 320
+endif
+set actorface0 state TEST_MAN_HEY
+set saymaster0 state UPDATEALL
+set saymaster0 AT 0
+set saymaster0 text " YOU BETTER PUSH THAT RED BUTTON!"

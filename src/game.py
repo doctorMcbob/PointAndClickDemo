@@ -24,8 +24,8 @@ def set_up():
     random.seed()
     pygame.init()
     pygame.mixer.init()
-    W = 1152 if "-w" not in sys.argv else int(sys.argv[sys.argv.index("-w")+1])
-    H = 640 if "-h" not in sys.argv else int(sys.argv[sys.argv.index("-h")+1])
+    W = 1280 if "-w" not in sys.argv else int(sys.argv[sys.argv.index("-w")+1])
+    H = 720 if "-h" not in sys.argv else int(sys.argv[sys.argv.index("-h")+1])
     G = {"W":W,"H":H}
     G["SCREEN"] = pygame.display.set_mode((W, H)) if "-f" not in sys.argv else pygame.display.set_mode((W, H), pygame.FULLSCREEN)
     pygame.display.set_caption("Red Pants")

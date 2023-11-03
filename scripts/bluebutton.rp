@@ -1,0 +1,66 @@
+BUTTON|0,0,0,0|False|
+START:0 empty 0,0
+OFF00 bluebuttonoff00 0,0
+OFF01 bluebuttonoff01 0,0
+OFF02 bluebuttonoff02 0,0
+OFF10 bluebuttonoff10 0,0
+OFF11 bluebuttonoff11 0,0
+OFF12 bluebuttonoff12 0,0
+OFF20 bluebuttonoff20 0,0
+OFF21 bluebuttonoff21 0,0
+OFF22 bluebuttonoff22 0,0
+OVER00 bluebuttonover00 0,0
+OVER01 bluebuttonover01 0,0
+OVER02 bluebuttonover02 0,0
+OVER10 bluebuttonover10 0,0
+OVER11 bluebuttonover11 0,0
+OVER12 bluebuttonover12 0,0
+OVER20 bluebuttonover20 0,0
+OVER21 bluebuttonover21 0,0
+OVER22 bluebuttonover22 0,0
+PRESSED00 bluebuttonpressed00 0,0
+PRESSED01 bluebuttonpressed01 0,0
+PRESSED02 bluebuttonpressed02 0,0
+PRESSED10 bluebuttonpressed10 0,0
+PRESSED11 bluebuttonpressed11 0,0
+PRESSED12 bluebuttonpressed12 0,0
+PRESSED20 bluebuttonpressed20 0,0
+PRESSED21 bluebuttonpressed21 0,0
+PRESSED22 bluebuttonpressed22 0,0
+
+|START:0|
+set self state OFF
+set self platform 1
+
+|OFF:0|
+if MOUSEOVER?
+   set self state OVER
+endif
+
+|OVER:0|
+if not MOUSEOVER?
+   set self state OFF
+   break
+endif
+if inpCLICK_LEFT
+   set self state PRESSED
+   exec press
+endif
+
+|PRESSED:0|
+if not MOUSEOVER?
+   set self state OFF
+endif
+if not inpMOUSE_LEFT
+   set self state OVER
+endif
+
+|press|
+set self calc isframe SAY
+if not self.calc
+   makeframe SAY sayroom 64 256 1024 320
+endif
+set actorface0 state TEST_MAN_WHAT
+set saymaster0 state UPDATEALL
+set saymaster0 AT 0
+set saymaster0 text "GRRR IM SO MAD! I CANNOT BELIEVE YOU WOULD BE SUCH A FREAKING JERK! GAH IM SO MAD I COULD PUNCH YOU IN THE STUPID HEAD! GRR HOW COULD YOU BE SO STUPID??"

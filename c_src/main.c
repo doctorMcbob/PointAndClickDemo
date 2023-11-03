@@ -33,8 +33,8 @@ I will be using uthash.h as my dictionary implementation
 #include <SDL2/SDL_mixer.h>
 #include <SDL2/SDL_timer.h>
 
-#define WID 1152
-#define HIGH 640
+#define WID 1280
+#define HIGH 720
 
 TTF_Font *font;
 void spritesheet_load(SDL_Renderer *rend);

@@ -1,0 +1,66 @@
+BUTTON|0,0,0,0|False|
+START:0 empty 0,0
+OFF00 redbuttonoff00 0,0
+OFF01 redbuttonoff01 0,0
+OFF02 redbuttonoff02 0,0
+OFF10 redbuttonoff10 0,0
+OFF11 redbuttonoff11 0,0
+OFF12 redbuttonoff12 0,0
+OFF20 redbuttonoff20 0,0
+OFF21 redbuttonoff21 0,0
+OFF22 redbuttonoff22 0,0
+OVER00 redbuttonover00 0,0
+OVER01 redbuttonover01 0,0
+OVER02 redbuttonover02 0,0
+OVER10 redbuttonover10 0,0
+OVER11 redbuttonover11 0,0
+OVER12 redbuttonover12 0,0
+OVER20 redbuttonover20 0,0
+OVER21 redbuttonover21 0,0
+OVER22 redbuttonover22 0,0
+PRESSED00 redbuttonpressed00 0,0
+PRESSED01 redbuttonpressed01 0,0
+PRESSED02 redbuttonpressed02 0,0
+PRESSED10 redbuttonpressed10 0,0
+PRESSED11 redbuttonpressed11 0,0
+PRESSED12 redbuttonpressed12 0,0
+PRESSED20 redbuttonpressed20 0,0
+PRESSED21 redbuttonpressed21 0,0
+PRESSED22 redbuttonpressed22 0,0
+
+|START:0|
+set self state OFF
+set self platform 1
+
+|OFF:0|
+if MOUSEOVER?
+   set self state OVER
+endif
+
+|OVER:0|
+if not MOUSEOVER?
+   set self state OFF
+   break
+endif
+if inpCLICK_LEFT
+   set self state PRESSED
+   exec press
+endif
+
+|PRESSED:0|
+if not MOUSEOVER?
+   set self state OFF
+endif
+if not inpMOUSE_LEFT
+   set self state OVER
+endif
+
+|press|
+set self calc isframe SAY
+if not self.calc
+   makeframe SAY sayroom 64 256 1024 320
+endif
+set actorface0 state TEST_MAN_HEY
+set saymaster0 state UPDATEALL
+set saymaster0 AT 0
+set saymaster0 text "GREAT! NOW DO IT AGAIN AND AGAIN AND AGAIN!!!"
